@@ -100,60 +100,52 @@ exp(confint(fit9un))
 
 #Timeliness variables
 fit1full <- glmer(first_clinical_assessment ~ post + age2 + gender +
-                    payer + admitreason + race + pmca + unstable_bp +
-                    unstable_hr + unstable_resp + unstable_tp + unstable_o2 + language + brief_comp +
+                    payer + admitreason + race + pmca + language + brief_comp +
                     site + arrive_block + arrive_block*site +
                     (1 | Practice.group), data=All, family = Gamma(link = "log"))
 summary(fit1full)
 fit2full <- glmer(first_labs_imaging ~ post + age2 + gender +
-                    payer + admitreason + race + pmca + unstable_bp +
-                    unstable_hr + unstable_resp + unstable_tp + unstable_o2 + language + brief_comp +
+                    payer + admitreason + race + pmca + language + brief_comp +
                     site + arrive_block + arrive_block*site +
                     (1 | Practice.group), data=All, family = Gamma(link = "log"))
 summary(fit2full)
 fit3full <- glmer(first_medication_admin ~ post + age2 + gender +
-                    payer + admitreason + race + pmca + unstable_bp +
-                    unstable_hr + unstable_resp + unstable_tp + unstable_o2 + language + brief_comp +
+                    payer + admitreason + race + pmca + language + brief_comp +
                     site + arrive_block + arrive_block*site +
                     (1 | Practice.group), data=All, family = Gamma(link = "log"))
 summary(fit3full)
 
 #Family experience of care overall mean
 fit4full <- lmer(fec ~ post + age2 + gender +
-                   payer + admitreason + race + pmca + unstable_bp +
-                   unstable_hr + unstable_resp + unstable_tp + unstable_o2 +
-                   site + arrive_block + arrive_block*site + brief_comp + (1 | Practice.group), data=All)
+                   payer + admitreason + race + pmca + language + brief_comp +
+                   site + arrive_block + arrive_block*site + (1 | Practice.group), data=All)
 summary(fit4full)
 
 #Family experience of care domains
 fit5full <- glmer(is~post + age2 + gender +
-                    payer + admitreason + race + pmca + unstable_bp +
-                    unstable_hr + unstable_resp + unstable_tp + unstable_o2 + language + brief_comp +
+                    payer + admitreason + race + pmca + language + brief_comp +
                     site + arrive_block + arrive_block*site +
                     (1 | Practice.group), data=All, family = 'binomial')
 summary(fit5full)
 fit6full <- glmer(toc~post + age2 + gender +
-                    payer + admitreason + race + pmca + unstable_bp +
-                    unstable_hr + unstable_resp + unstable_tp + unstable_o2 + language + brief_comp +
+                    payer + admitreason + race + pmca + language + brief_comp +
                     site + arrive_block + arrive_block*site +
                     (1 | Practice.group), data=All, family = 'binomial')
 summary(fit6full)
 fit7full <- glmer(ecd~post + age2 + gender +
-                    payer + admitreason + race + pmca + unstable_bp +
-                    unstable_hr + unstable_resp + unstable_tp + unstable_o2 + language + brief_comp +
+                    payer + admitreason + race + pmca + language + brief_comp +
                     site + arrive_block + arrive_block*site +
                     (1 | Practice.group), data=All, family = 'binomial')
 summary(fit7full)
 fit8full <- glmer(pfe~post + age2 + gender +
-                    payer + admitreason + race + pmca + unstable_bp +
-                    unstable_hr + unstable_resp + unstable_tp + unstable_o2 + language + brief_comp +
+                    payer + admitreason + race + pmca + language + brief_comp +
                     site + arrive_block + arrive_block*site +
                     (1 | Practice.group), data=All, family = 'binomial')
 summary(fit8full)
 
 #Rapid response/ICU transfer
-fit9full <- glmer(tran_read ~ post + age2 + gender +
-                    payer + admitreason + race + pmca +
-                    site + arrive_block + arrive_block*site + (1 | Practice.group), data=All,
-                  family = 'binomial')
+fit9full <- glmer(tran_read ~post + age2 + gender +
+                    payer + admitreason + race + pmca + language + brief_comp +
+                    site + arrive_block + arrive_block*site +
+                    (1 | Practice.group), data=All, family = 'binomial')
 summary(fit9full)
